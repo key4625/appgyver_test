@@ -16,6 +16,7 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.CameraPosition.Builder;
 import com.google.android.gms.maps.model.LatLng;
 import android.app.Activity;
+import android.os.Bundle;
 
 public class GoogleMaps extends CordovaPlugin {
   public CordovaWebView webView;
