@@ -8,12 +8,7 @@ $> cordova plugin add https://github.com/wf9a5m75/appgyver_test --variable API_K
 
 For AppGyver, use the appgyver branch.
 ![](https://googledrive.com/host/0B1ECfqTCcLE8VDI3cVU1NDN0c00/Screen Shot 2014-11-10 at 3.14.01 PM.png)
-```
-[
-  {"source":"https://github.com/wf9a5m75/appgyver_test#app_gyver","variables":{"API_KEY_FOR_ANDROID":"..."}},
-  {"source":"https://github.com/wf9a5m75/google-play-services"}
-]
-```
+
 
 
 ###Example Code
