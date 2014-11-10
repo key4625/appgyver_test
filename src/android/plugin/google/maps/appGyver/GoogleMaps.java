@@ -49,7 +49,13 @@ public class GoogleMaps extends CordovaPlugin {
         builder.zoom(0);
         options.camera(builder.build());
         MapView mapView = new MapView(activity, options);
-        mapView.onCreate(null);
+        
+        // Hack for AppGyver (I don't know why, but it works well)
+        try {
+          mapView.onCreate(null);
+        } catch(Exception e) {
+          mapView.onCreate(new Bundle());
+        }
         mapView.onResume();
         webView.addView(mapView);
         callbackContext.success();
