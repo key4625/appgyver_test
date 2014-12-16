@@ -16,6 +16,7 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.CameraPosition.Builder;
 import com.google.android.gms.maps.model.LatLng;
 import android.app.Activity;
+import android.os.Bundle;
 
 public class GoogleMaps extends CordovaPlugin {
   public CordovaWebView webView;
@@ -49,7 +50,13 @@ public class GoogleMaps extends CordovaPlugin {
         builder.zoom(0);
         options.camera(builder.build());
         MapView mapView = new MapView(activity, options);
-        mapView.onCreate(null);
+        
+        // Hack for AppGyver (I don't know why, but it works well)
+        try {
+          mapView.onCreate(null);
+        } catch(Exception e) {
+          mapView.onCreate(new Bundle());
+        }
         mapView.onResume();
         webView.addView(mapView);
         callbackContext.success();
