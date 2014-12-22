@@ -52,9 +52,6 @@ public class GoogleMaps extends CordovaPlugin {
         builder.zoom(0);
         options.camera(builder.build());
         MapView mapView = new MapView(activity, options);
-        map = mapView.getMap();
-        map.setMyLocationEnabled(true);
-        //map.getUiSettings().setMyLocationButtonEnabled(true);
         
         // Hack for AppGyver (I don't know why, but it works well)
         try {
