@@ -17,10 +17,12 @@ import com.google.android.gms.maps.model.CameraPosition.Builder;
 import com.google.android.gms.maps.model.LatLng;
 import android.app.Activity;
 import android.os.Bundle;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 public class GoogleMaps extends CordovaPlugin {
   public CordovaWebView webView;
   private Activity activity;
+  public GoogleMap map = null;
 
   @Override
   public void initialize(CordovaInterface cordova, final CordovaWebView webView) {
@@ -45,13 +47,12 @@ public class GoogleMaps extends CordovaPlugin {
         GoogleMapOptions options = new GoogleMapOptions();
         options.mapType(GoogleMap.MAP_TYPE_NORMAL);
         options.compassEnabled(true);
-        options.setMyLocationEnabled(true);
         Builder builder = CameraPosition.builder();
         builder.target(new LatLng(0, 0));
         builder.zoom(0);
         options.camera(builder.build());
         MapView mapView = new MapView(activity, options);
-        
+       
         // Hack for AppGyver (I don't know why, but it works well)
         try {
           mapView.onCreate(null);
@@ -61,9 +62,13 @@ public class GoogleMaps extends CordovaPlugin {
         mapView.onResume();
         webView.addView(mapView);
         callbackContext.success();
+        map = mapView.getMap();
+        map.setMyLocationEnabled(true);
       }
     };
     cordova.getActivity().runOnUiThread(runnable);
     return true;
   }
+ 
+ 
 }
