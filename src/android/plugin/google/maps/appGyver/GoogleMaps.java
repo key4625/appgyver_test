@@ -44,7 +44,7 @@ public class GoogleMaps extends CordovaPlugin {
           return;
         }
         GoogleMapOptions options = new GoogleMapOptions();
-        options.mapType(GoogleMap.MAP_TYPE_NORMAL);
+        options.mapType(GoogleMap.MAP_TYPE_SATELLITE);
         options.compassEnabled(true);
        
         Builder builder = CameraPosition.builder();
