@@ -28,7 +28,11 @@ public class GoogleMaps extends CordovaPlugin {
     activity = cordova.getActivity();
     this.webView = webView;
   }
-
+ public boolean setMarker(){
+   this.addMarker(new MarkerOptions()
+        .position(new LatLng(10, 10))
+        .title("Hello world"));
+ }
   @Override
   public boolean execute(final String action, final JSONArray args, final CallbackContext callbackContext) throws JSONException {
     Runnable runnable = new Runnable() {
